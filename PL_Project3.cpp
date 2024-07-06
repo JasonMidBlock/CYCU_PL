@@ -1,5 +1,4 @@
 // 中原資工11027241 楊昀祖 -> OurC interpreter Project 3
-// 問題 抓隱藏 做code review
 # include <iostream> 
 # include <stdio.h>
 # include <vector>
@@ -382,7 +381,7 @@ bool Is_Special( Token atoken ) {
 // 用來判斷token 數字開頭或是dot開頭的字串是否正確
 // 三種錯誤
 // 字串只有一個dot 這裡解決
-// 字串中有兩個dots - GetDigits fix
+// 字串中有兩個dots - GetDigits
 // 字串中有不屬於Digit or dot 的字元 這裡解決
 bool Is_Number( string s ) {
   if ( s == "." ) {
@@ -856,7 +855,7 @@ bool Is_rest_of_declarators() { // 宣告
       } // else
     } // if
     else {
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
     } // else
   } // if
 
@@ -881,11 +880,11 @@ bool Is_rest_of_declarators() { // 宣告
               Update_CheckToken();
             } // if
             else {
-              return Set_SyntacticalError() ; // Grammar error
+              return Set_SyntacticalError() ; 
             } // else
           } // if
           else {
-            return Set_SyntacticalError() ; // Grammar error
+            return Set_SyntacticalError() ; 
           } // else
         } // if
         else {
@@ -893,7 +892,7 @@ bool Is_rest_of_declarators() { // 宣告
         } // else
       } // if
       else { 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
       } // else
     } // while
   } // if
@@ -940,10 +939,10 @@ bool Is_formal_parameter_list() { // function parameter
             Update_CheckToken();
           } // if
           else 
-            return Set_SyntacticalError() ; // Grammar error
+            return Set_SyntacticalError() ; 
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       }  // if '['
 
 
@@ -1027,7 +1026,7 @@ bool Is_compound_statement() {
       return true;
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // if
 
   return false;
@@ -1058,11 +1057,11 @@ bool Is_function_definition_without_ID() {   // 宣告function
       else {
         g_store_token = false; // 停止存token
         g_temptokenlist.clear();
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
       } // else
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // if
   
   return false;
@@ -1083,10 +1082,10 @@ bool Is_declaration() { // 宣告變數
         return true;
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // if
 
   return false;
@@ -1136,11 +1135,11 @@ bool Is_Definition() {
         return true; // 宣告函數
       } // if
       else {
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
       } // else 
     } // if ( tokens[tokens_index].type == "Identifier" )
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // if ( tokens[tokens_index].type == "VOID" ) 
   else if ( Is_type_specifier() ) {
     temp_value.type = g_check_token.type;
@@ -1155,11 +1154,11 @@ bool Is_Definition() {
         return true; 
       } // if
       else {
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
       } // else
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if ( Is_type_specifier( tokens[tokens_index ) )
   
 
@@ -1200,39 +1199,39 @@ bool Is_rest_of_Identifier_started_basic_exp() {
           if ( Is_basic_expression() ) 
             return true;
           else 
-            return Set_SyntacticalError() ; // Grammar error
+            return Set_SyntacticalError() ; 
         } // if
         else if ( g_check_token.type == PP || g_check_token.type == MM ) {
           Update_CheckToken();
           if ( Is_romce_and_romloe() ) 
             return true;
           else 
-            return Set_SyntacticalError() ; // Grammar error
+            return Set_SyntacticalError() ; 
         } // else if
         else if ( Is_romce_and_romloe() ) {
           return true;
         } // else if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // if
   else if ( Is_assignment_operator() ) {
     if ( Is_basic_expression() ) 
       return true;
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
   else if ( g_check_token.type == PP || g_check_token.type == MM ) {
     Update_CheckToken();
     if ( Is_romce_and_romloe() ) 
       return true;
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
   else if ( g_check_token.type == SLBRACKET ) {
     Update_CheckToken();
@@ -1242,17 +1241,17 @@ bool Is_rest_of_Identifier_started_basic_exp() {
         if ( Is_romce_and_romloe() )
           return true;
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else if ( g_check_token.type == SRBRACKET ) {
       Update_CheckToken();
       if ( Is_romce_and_romloe() ) 
         return true;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // else if
     else  
       return false;
@@ -1277,13 +1276,13 @@ bool Is_rest_of_PPMM_Identifier_started_basic_exp() {
         if ( Is_romce_and_romloe() )
           return true;
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // if
   else if ( Is_romce_and_romloe() ) 
     return true;
@@ -1331,7 +1330,7 @@ bool Is_signed_unary_exp() {
           return true;
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if 
       else if ( g_check_token.type == SRBRACKET ) {
         Update_CheckToken();
@@ -1346,10 +1345,10 @@ bool Is_signed_unary_exp() {
           return true;
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // else if
     else 
       return true;
@@ -1366,10 +1365,10 @@ bool Is_signed_unary_exp() {
         return true;
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
   else
     return false;
@@ -1386,7 +1385,7 @@ bool Is_rest_of_maybe_additive_exp() {
       if ( Is_maybe_mult_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1404,7 +1403,7 @@ bool Is_rest_of_maybe_shift_exp() {
       if ( Is_maybe_additive_exp() )
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1424,7 +1423,7 @@ bool Is_rest_of_maybe_relational_exp() {
       if ( Is_maybe_shift_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1443,7 +1442,7 @@ bool Is_rest_of_maybe_equality_exp() {
       if ( Is_maybe_relational_exp() )
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1483,7 +1482,7 @@ bool Is_rest_of_maybe_bit_ex_OR_exp() {
       if ( Is_maybe_bit_AND_exp() ) 
         Update_CheckToken();
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1502,7 +1501,7 @@ bool Is_rest_of_maybe_bit_OR_exp() {
       if ( Is_maybe_bit_ex_OR_exp() )
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1521,7 +1520,7 @@ bool Is_rest_of_maybe_logical_AND_exp() {
       if ( Is_maybe_bit_OR_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1539,7 +1538,7 @@ bool Is_actual_parameter_list() {
       if ( Is_basic_expression() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
     
     return true;
@@ -1583,14 +1582,14 @@ bool Is_unsigned_unary_exp() { // 使用function
           return true;
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else if ( g_check_token.type == SRBRACKET ) {
         Update_CheckToken();
         return true;
       } // else if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else if ( g_check_token.type == MLBRACKET ) { 
       // Identifier [ '[' expression ']' ] [ ( PP | MM ) ]
@@ -1606,10 +1605,10 @@ bool Is_unsigned_unary_exp() { // 使用function
           return true;
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // else if
     else if ( g_check_token.type == PP || g_check_token.type == MM ) {
       // Identifier [ ( PP | MM ) ]
@@ -1632,10 +1631,10 @@ bool Is_unsigned_unary_exp() { // 使用function
         return true;
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
   else 
     return false;
@@ -1716,7 +1715,7 @@ bool Is_rest_of_maybe_mult_exp() {
       ;
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // while
   
   return true;
@@ -1749,7 +1748,7 @@ bool Is_maybe_additive_exp() {
         ;
       } // if
       else {
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
       } // else
     } // while
 
@@ -1768,7 +1767,7 @@ bool Is_maybe_shift_exp() {
       if ( Is_maybe_additive_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1786,7 +1785,7 @@ bool Is_maybe_relational_exp() {
       if ( Is_maybe_shift_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1804,7 +1803,7 @@ bool Is_maybe_equality_exp() {
       if ( Is_maybe_relational_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1822,7 +1821,7 @@ bool Is_maybe_bit_AND_exp() {
       if ( Is_maybe_equality_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1840,7 +1839,7 @@ bool Is_maybe_bit_ex_OR_exp() {
       if ( Is_maybe_bit_AND_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
 
@@ -1859,7 +1858,7 @@ bool Is_maybe_bit_OR_exp() {
       if ( Is_maybe_bit_ex_OR_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1877,7 +1876,7 @@ bool Is_maybe_logical_AND_exp() {
       if ( Is_maybe_bit_OR_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1895,7 +1894,7 @@ bool Is_rest_of_maybe_logical_OR_exp() {
       if ( Is_maybe_logical_AND_exp() ) 
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
 
     return true;
@@ -1918,13 +1917,13 @@ bool Is_romce_and_romloe() {
           if ( Is_basic_expression() )
             return true;
           else 
-            return Set_SyntacticalError() ; // Grammar error
+            return Set_SyntacticalError() ; 
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
       return true;
@@ -1965,7 +1964,7 @@ bool Is_basic_expression() {
       return true;
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // if
   else if ( g_check_token.type == PP || g_check_token.type == MM ) {
     Update_CheckToken();
@@ -1991,10 +1990,10 @@ bool Is_basic_expression() {
       if ( Is_rest_of_PPMM_Identifier_started_basic_exp() )
         return true;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if 
   else if ( Is_sign_for_Grammar() ) {
     Update_CheckToken();
@@ -2004,10 +2003,10 @@ bool Is_basic_expression() {
       if ( Is_romce_and_romloe() )
         return true;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if 
   else if ( g_check_token.type == CONSTANT ) {
     Update_CheckToken();
@@ -2015,7 +2014,7 @@ bool Is_basic_expression() {
       return true;
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
   else if ( g_check_token.type == SLBRACKET ) {
     Update_CheckToken();
@@ -2026,13 +2025,13 @@ bool Is_basic_expression() {
           return true;
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if 
       else 
-        return Set_SyntacticalError() ; // Grammar error 
+        return Set_SyntacticalError() ;  
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
 
   return false;
@@ -2046,7 +2045,7 @@ bool Is_expression() {
       if ( Is_basic_expression() )
         ;
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // while
     
     return true;
@@ -2074,7 +2073,7 @@ bool Is_Statement() {
       return true;
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if 
   else if ( Is_compound_statement() ) {
     return true;
@@ -2086,13 +2085,13 @@ bool Is_Statement() {
         return true; // RETURN expression  ';'
       } // if
       else {
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
       } // else
     } // if
     else if ( g_check_token.type == SEMICOLON ) 
       return true; // RETURN ';'
     else 
-      return Set_SyntacticalError() ; // Grammar error  
+      return Set_SyntacticalError() ;   
   } // else if "return"
   else if ( g_check_token.type == IF ) {
     Update_CheckToken();
@@ -2111,7 +2110,7 @@ bool Is_Statement() {
                 return true; // IF '(' expression ')' statement [ ELSE statement ]
               } // if
               else {
-                return Set_SyntacticalError() ; // Grammar error
+                return Set_SyntacticalError() ; 
               } // else
             } // if  可有可無
             else {
@@ -2120,16 +2119,16 @@ bool Is_Statement() {
             } // else
           } // if
 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   }  // else if
   else if ( g_check_token.type == WHILE ) {
     Update_CheckToken();
@@ -2142,17 +2141,17 @@ bool Is_Statement() {
             return true;  // WHILE '(' expression ')' statement
           } // if
           else {
-            return Set_SyntacticalError() ; // Grammar error
+            return Set_SyntacticalError() ; 
           } // else
         } // if
         else
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
   else if ( g_check_token.type == DO ) {
     Update_CheckToken();
@@ -2169,26 +2168,26 @@ bool Is_Statement() {
                 if ( g_check_token.type == SEMICOLON )
                   return true; // DO statement WHILE '(' expression ')' ';'
                 else 
-                  return Set_SyntacticalError() ; // Grammar error
+                  return Set_SyntacticalError() ; 
               } // if 
               else 
-                return Set_SyntacticalError() ; // Grammar error
+                return Set_SyntacticalError() ; 
             } // if
             else 
-              return Set_SyntacticalError() ; // Grammar error
+              return Set_SyntacticalError() ; 
           } // if
           else 
-            return Set_SyntacticalError() ; // Grammar error
+            return Set_SyntacticalError() ; 
         } // if
         else 
-          return Set_SyntacticalError() ; // Grammar error
+          return Set_SyntacticalError() ; 
       } // if
       else {
         return Set_SyntacticalError();
       } // else
     } // if
     else
-      return Set_SyntacticalError() ; // Grammar error
+      return Set_SyntacticalError() ; 
   } // else if
   else if ( Is_SystemCall() ) {
     InitToken( g_tempToken );
@@ -2221,10 +2220,10 @@ bool Is_Special_Grammar() {
         return true;
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return false ; // Grammar error
+      return false ; 
   } // if 
   else if ( g_check_token.type == COUT ) {
     Update_CheckToken();
@@ -2243,10 +2242,10 @@ bool Is_Special_Grammar() {
         return true;
       } // if
       else 
-        return Set_SyntacticalError() ; // Grammar error
+        return Set_SyntacticalError() ; 
     } // if
     else 
-      return false ; // Grammar error
+      return false ; 
   } // else if 
 
 
